@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as Chartist from 'chartist';
+import {  DataPipeService } from '../data-pipe.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,6 +7,8 @@ import * as Chartist from 'chartist';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+
+
   public lineBigDashboardChartType;
   public gradientStroke;
   public chartColor;
@@ -22,22 +24,41 @@ export class DashboardComponent implements OnInit {
   public gradientChartOptionsConfigurationWithNumbersAndGrid: any;
 
   public lineChartType;
-  public lineChartData: Array<any>;
+  public lineChartData: Array<any> = this.data.tempData();
   public lineChartOptions: any;
-  public lineChartLabels: Array<any>;
-  public lineChartColors: Array<any>
+  public lineChartLabels: Array<any> = this.data.tempLabels();
+  public lineChartColors: Array<any>;
+
+  public lineChartType1;
+  public lineChartData1: Array<any> = this.data.tempDataWeek();
+  public lineChartOptions1: any;
+  public lineChartLabels1: Array<any> = this.data.templabelsWeek();
+  public lineChartColors1: Array<any>;
 
   public lineChartWithNumbersAndGridType;
-  public lineChartWithNumbersAndGridData: Array<any>;
+  public lineChartWithNumbersAndGridData: Array<any> = this.data.humiData();
   public lineChartWithNumbersAndGridOptions: any;
-  public lineChartWithNumbersAndGridLabels: Array<any>;
-  public lineChartWithNumbersAndGridColors: Array<any>
+  public lineChartWithNumbersAndGridLabels: Array<any> = this.data.humiLabels();
+  public lineChartWithNumbersAndGridColors: Array<any>;
+
+  public lineChartWithNumbersAndGridType1;
+  public lineChartWithNumbersAndGridData1: Array<any> = this.data.humiDataWeek();
+  public lineChartWithNumbersAndGridOptions1: any;
+  public lineChartWithNumbersAndGridLabels1: Array<any> = this.data.humiLabelsWeek();
+  public lineChartWithNumbersAndGridColors1: Array<any>;
 
   public lineChartGradientsNumbersType;
-  public lineChartGradientsNumbersData: Array<any>;
+  public lineChartGradientsNumbersData: Array<any> = this.data.brightData();
   public lineChartGradientsNumbersOptions: any;
-  public lineChartGradientsNumbersLabels: Array<any>;
+  public lineChartGradientsNumbersLabels: Array<any> = this.data.brightLabels();
   public lineChartGradientsNumbersColors: Array<any>;
+
+  public lineChartGradientsNumbersType1;
+  public lineChartGradientsNumbersData1: Array<any> = this.data.brightDataWeek();
+  public lineChartGradientsNumbersOptions1: any;
+  public lineChartGradientsNumbersLabels1: Array<any> = this.data.brightLabelsWeek();
+  public lineChartGradientsNumbersColors1: Array<any>;
+
   public date: any;
   // events
   public chartClicked(e: any): void {
@@ -58,8 +79,7 @@ export class DashboardComponent implements OnInit {
       return 'rgb(' + r + ', ' + g + ', ' + b + ')';
     }
   }
-  constructor() { }
-
+  constructor(private data: DataPipeService) { }
   ngOnInit() {
     this.date = new Date();
     this.chartColor = '#FFFFFF';
@@ -266,19 +286,6 @@ export class DashboardComponent implements OnInit {
     this.gradientFill = this.ctx.createLinearGradient(0, 170, 0, 50);
     this.gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
     this.gradientFill.addColorStop(1, 'rgba(249, 99, 59, 0.40)');
-
-    this.lineChartData = [
-        {
-          label: ' temperature',
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          borderWidth: 2,
-          data: [542, 480, 430, 550, 530, 453, 380, 434, 568, 610, 700, 630] // temp data feeding Y
-        }
-      ];
       this.lineChartColors = [
        {
          borderColor: '#f96332',
@@ -287,12 +294,33 @@ export class DashboardComponent implements OnInit {
          backgroundColor: this.gradientFill
        }
      ];
-    this.lineChartLabels = ['0am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am',
-      '10am', '11am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm',
-      '10pm', '11pm']; // temp data feeding X
     this.lineChartOptions = this.gradientChartOptionsConfiguration;
-
     this.lineChartType = 'line';
+
+    this.canvas = document.getElementById('lineChartExample1');
+    this.ctx = this.canvas.getContext('2d');
+
+    this.gradientStroke = this.ctx.createLinearGradient(500, 0, 100, 0);
+    this.gradientStroke.addColorStop(0, '#80b6f4');
+    this.gradientStroke.addColorStop(1, this.chartColor);
+
+    this.gradientFill = this.ctx.createLinearGradient(0, 170, 0, 50);
+    this.gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
+    this.gradientFill.addColorStop(1, 'rgba(249, 99, 59, 0.40)');
+    this.lineChartColors1 = [
+      {
+        borderColor: '#f96332',
+        pointBorderColor: '#FFF',
+        pointBackgroundColor: '#f96332',
+        backgroundColor: this.gradientFill
+      }
+    ];
+    this.lineChartOptions1 = this.gradientChartOptionsConfiguration;
+    this.lineChartType1 = 'line';
+
+
+
+    // -------------------------------------------------------------------
 
     this.canvas = document.getElementById('lineChartExampleWithNumbersAndGrid');
     this.ctx = this.canvas.getContext('2d');
@@ -305,18 +333,6 @@ export class DashboardComponent implements OnInit {
     this.gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
     this.gradientFill.addColorStop(1, this.hexToRGB('#18ce0f', 0.4));
 
-    this.lineChartWithNumbersAndGridData = [
-        {
-          label: ' humidity',
-           pointBorderWidth: 2,
-           pointHoverRadius: 4,
-           pointHoverBorderWidth: 1,
-           pointRadius: 4,
-           fill: true,
-           borderWidth: 2,
-          data: [40, 500, 650, 700, 1200, 1250, 1300, 1900]
-        }
-      ];
       this.lineChartWithNumbersAndGridColors = [
        {
          borderColor: '#18ce0f',
@@ -325,13 +341,35 @@ export class DashboardComponent implements OnInit {
          backgroundColor: this.gradientFill
        }
      ];
-    this.lineChartWithNumbersAndGridLabels = ['0am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am',
-      '10am', '11am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm',
-      '10pm', '11pm'];
     this.lineChartWithNumbersAndGridOptions = this.gradientChartOptionsConfigurationWithNumbersAndGrid;
 
     this.lineChartWithNumbersAndGridType = 'line';
 
+
+    this.canvas = document.getElementById('lineChartExampleWithNumbersAndGrid1');
+    this.ctx = this.canvas.getContext('2d');
+
+    this.gradientStroke = this.ctx.createLinearGradient(500, 0, 100, 0);
+    this.gradientStroke.addColorStop(0, '#18ce0f');
+    this.gradientStroke.addColorStop(1, this.chartColor);
+
+    this.gradientFill = this.ctx.createLinearGradient(0, 170, 0, 50);
+    this.gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
+    this.gradientFill.addColorStop(1, this.hexToRGB('#18ce0f', 0.4));
+
+    this.lineChartWithNumbersAndGridColors1 = [
+      {
+        borderColor: '#18ce0f',
+        pointBorderColor: '#FFF',
+        pointBackgroundColor: '#18ce0f',
+        backgroundColor: this.gradientFill
+      }
+    ];
+    this.lineChartWithNumbersAndGridOptions1 = this.gradientChartOptionsConfigurationWithNumbersAndGrid;
+
+    this.lineChartWithNumbersAndGridType1 = 'line';
+
+  // ------------------------------------------------------------------------------------------------------
 
 
 
@@ -342,19 +380,6 @@ export class DashboardComponent implements OnInit {
     this.gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
     this.gradientFill.addColorStop(1, this.hexToRGB('#2CA8FF', 0.6));
 
-
-    this.lineChartGradientsNumbersData = [
-        {
-          label: ' brightness',
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          borderWidth: 1,
-          data: [80, 99, 86, 96, 123, 85, 100, 75, 88, 90, 123, 155]
-        }
-      ];
     this.lineChartGradientsNumbersColors = [
      {
        backgroundColor: this.gradientFill,
@@ -363,9 +388,6 @@ export class DashboardComponent implements OnInit {
        pointBackgroundColor: '#2CA8FF',
      }
    ];
-    this.lineChartGradientsNumbersLabels = ['0am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am',
-      '10am', '11am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm',
-      '10pm', '11pm'];
     this.lineChartGradientsNumbersOptions = {
         maintainAspectRatio: false,
         legend: {
@@ -411,5 +433,67 @@ export class DashboardComponent implements OnInit {
         }
       },
     this.lineChartGradientsNumbersType = 'bar';
+
+
+    this.canvas = document.getElementById('barChartSimpleGradientsNumbers1');
+    this.ctx = this.canvas.getContext('2d');
+
+    this.gradientFill = this.ctx.createLinearGradient(0, 170, 0, 50);
+    this.gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
+    this.gradientFill.addColorStop(1, this.hexToRGB('#2CA8FF', 0.6));
+
+    this.lineChartGradientsNumbersColors1 = [
+      {
+        backgroundColor: this.gradientFill,
+        borderColor: '#2CA8FF',
+        pointBorderColor: '#FFF',
+        pointBackgroundColor: '#2CA8FF',
+      }
+    ];
+    this.lineChartGradientsNumbersOptions1 = {
+      maintainAspectRatio: false,
+      legend: {
+        display: false
+      },
+      tooltips: {
+        bodySpacing: 4,
+        mode: 'nearest',
+        intersect: 0,
+        position: 'nearest',
+        xPadding: 10,
+        yPadding: 10,
+        caretPadding: 10
+      },
+      responsive: 1,
+      scales: {
+        yAxes: [{
+          gridLines: {
+            zeroLineColor: 'transparent',
+            drawBorder: false
+          }
+        }],
+        xAxes: [{
+          display: 0,
+          ticks: {
+            display: false
+          },
+          gridLines: {
+            zeroLineColor: 'transparent',
+            drawTicks: false,
+            display: false,
+            drawBorder: false
+          }
+        }]
+      },
+      layout: {
+        padding: {
+          left: 0,
+          right: 0,
+          top: 15,
+          bottom: 15
+        }
+      }
+    },
+      this.lineChartGradientsNumbersType1 = 'bar';
   }
 }

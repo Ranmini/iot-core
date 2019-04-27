@@ -21,10 +21,7 @@
               <i class="now-ui-icons loader_gear"></i>
             </button>
             <div ngbDropdownMenu class="dropdown-menu-right">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-              <a class="dropdown-item text-danger" href="#">Remove Data</a>
+              <a class="dropdown-item text-success" >refresh</a>
             </div>
           </div>
         </div>
@@ -57,10 +54,7 @@
               <i class="now-ui-icons loader_gear"></i>
             </button>
             <div ngbDropdownMenu class="dropdown-menu-right">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-              <a class="dropdown-item text-danger" href="#">Remove Data</a>
+              <a class="dropdown-item text-success" >refresh</a>
             </div>
           </div>
         </div>
@@ -88,7 +82,15 @@
       <div class="card card-chart">
         <div class="card-header">
           <h5 class="card-category"> Green House {{date | date:'yyyy-MM-dd'}} </h5>
-          <h4 class="card-title">Brightness during the day</h4>
+          <h4 class="card-title">Brightness</h4>
+        </div>
+        <div ngbDropdown>
+          <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" ngbDropdownToggle>
+            <i class="now-ui-icons loader_gear"></i>
+          </button>
+          <div ngbDropdownMenu class="dropdown-menu-right">
+            <a class="dropdown-item text-success" >refresh</a>
+          </div>
         </div>
         <div class="card-body">
           <div class="chart-area">
@@ -100,6 +102,108 @@
                         [chartType]="lineChartGradientsNumbersType"
                         (chartHover)="chartHovered($event)"
                         (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="now-ui-icons ui-2_time-alarm"></i> Last 24 Hours
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category"> Green House {{date | date:'yyyy-MM'}} </h5>
+          <h4 class="card-title">Temperature</h4>
+          <div ngbDropdown>
+            <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" ngbDropdownToggle>
+              <i class="now-ui-icons loader_gear"></i>
+            </button>
+            <div ngbDropdownMenu class="dropdown-menu-right">
+              <a class="dropdown-item text-success" >refresh</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <canvas baseChart id="lineChartExample1"
+                    [datasets]="lineChartData1"
+                    [labels]="lineChartLabels1"
+                    [colors]="lineChartColors1"
+                    [options]="lineChartOptions1"
+                    [chartType]="lineChartType1"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category"> Green House {{date | date:'yyyy-MM'}} </h5>
+          <h4 class="card-title">Humidity</h4>
+          <div ngbDropdown>
+            <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" ngbDropdownToggle>
+              <i class="now-ui-icons loader_gear"></i>
+            </button>
+            <div ngbDropdownMenu class="dropdown-menu-right">
+              <a class="dropdown-item text-success" >refresh</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <!-- <canvas id="lineChartExampleWithNumbersAndGrid"></canvas> -->
+            <canvas baseChart id="lineChartExampleWithNumbersAndGrid1"
+                    [datasets]="lineChartWithNumbersAndGridData1"
+                    [labels]="lineChartWithNumbersAndGridLabels1"
+                    [colors]="lineChartWithNumbersAndGridColors1"
+                    [options]="lineChartWithNumbersAndGridOptions1"
+                    [chartType]="lineChartWithNumbersAndGridType1"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category"> Green House {{date | date:'yyyy-MM'}} </h5>
+          <h4 class="card-title">Brightness</h4>
+        </div>
+        <div ngbDropdown>
+          <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" ngbDropdownToggle>
+            <i class="now-ui-icons loader_gear"></i>
+          </button>
+          <div ngbDropdownMenu class="dropdown-menu-right">
+            <a class="dropdown-item text-success" >refresh</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <canvas baseChart id="barChartSimpleGradientsNumbers1"
+                    [datasets]="lineChartGradientsNumbersData1"
+                    [labels]="lineChartGradientsNumbersLabels1"
+                    [colors]="lineChartGradientsNumbersColors1"
+                    [options]="lineChartGradientsNumbersOptions1"
+                    [chartType]="lineChartGradientsNumbersType1"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
           </div>
         </div>
         <div class="card-footer">
