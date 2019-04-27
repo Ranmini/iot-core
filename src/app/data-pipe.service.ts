@@ -9,6 +9,18 @@ export class DataPipeService {
   constructor() { }
 
 
+  public realTimetemp(): number {
+    return 23.34;
+  }
+
+  public realTimeHumi(): number {
+    return 13.34;
+  }
+
+  public realtimeBright(): number {
+    return 34;
+  }
+
   public tempData(): Array<any> {
     return [
       {

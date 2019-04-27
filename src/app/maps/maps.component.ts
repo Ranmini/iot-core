@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {LocationService} from '../location.service';
+
 
 declare const google: any;
 
@@ -15,11 +17,20 @@ draggable?: boolean;
 })
 export class MapsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private location: LocationService) { }
+
+  public position_user = this.location.getPosition();
+  public geo: number;
+  public geo2: number;
 
   ngOnInit() {
 
-    var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
+    this.position_user.then(pos=>{
+      this.geo = pos.lng;
+      this.geo2 = pos.lat;
+    })
+
+    var myLatlng =  {lat: 6.9271, lng: 79.8612 };
     var mapOptions = {
         zoom: 13,
         center: myLatlng,

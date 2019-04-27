@@ -9,6 +9,11 @@ import {  DataPipeService } from '../data-pipe.service';
 export class DashboardComponent implements OnInit {
 
 
+  public temp: number = this.data.realTimetemp();
+  public humi: number = this.data.realTimeHumi();
+  public bright: number = this.data.realtimeBright();
+
+
   public lineBigDashboardChartType;
   public gradientStroke;
   public chartColor;

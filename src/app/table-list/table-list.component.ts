@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DevicesService} from '../devices.service';
+
 
 @Component({
   selector: 'app-table-list',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableListComponent implements OnInit {
 
-  constructor() { }
+
+  public test: string = 'q';
+
+  public elements: Array<any> ;
+
+  constructor(private devices: DevicesService) { }
 
   ngOnInit() {
+    this.elements = this.devices.getDevices() ;
+  }
+
+  public getInfo(parm: string){
+    this.test = parm;
   }
 
 }
