@@ -12,31 +12,67 @@
             <div class = "col-md-4">
               <div class="form-group">
                 <label>Device Tag </label>
-                <input type="text" class="form-control"  placeholder="Free" value="Device Tag">
+                <input type="text" class="form-control" disabled="" placeholder="Device Tag" value="{{device_tag}}}">
               </div>
             </div>
 
             <div class = "col-md-4">
               <div class="form-group">
                 <label>Device Type </label>
-                <input type="text" class="form-control"  placeholder="Free" value="Device Type">
+                <input type="text" class="form-control"  disabled="" placeholder="Device Type" value="{{device_type}}">
               </div>
             </div>
 
             <div class = "col-md-4">
               <div class="form-group">
-                <label>Device Vendor </label>
-                <input type="text" class="form-control"  placeholder="Free" value="Device Vendor">
+                <label>Device sensors </label>
+                <input type="text" class="form-control"  placeholder="Device Tag" value="Device Sensors">
+              </div>
+            </div>
+          </div>
+          </div>
+        <div class="card-footer">
+          <button type="button" class="btn btn-secondary" (click)="generateToken()">Add New Device To Your  GreenHouse</button>
+        </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Get Your Security Token</h5>
+        </div>
+        <div class="card-body all-icons">
+          <div class="row">
+
+            <div class = "col-md-4">
+              <div class="form-group">
+                <label>Sensor Security Token</label>
+                <input type="text" class="form-control"  placeholder="Sensor Security Token" value="{{token}}">
+              </div>
+            </div>
+
+            <div class = "col-md-8">
+              <div class="form-group">
+                <label> Instructions </label>
+                <p>The Internet of Things (IoT) is a network of physical devices which are able to connect to a
+                  network and exchange data. Each "thing" or "smart device" is a gadget with embedded electronics
+                  and software which can act as a sensor or actuator. Sensors are able to report the state of the
+                  real-world around them.</p>
               </div>
             </div>
 
 
           </div>
-          </div>
-        <div class="card-footer">
-          <button type="button" class="btn btn-secondary">Add New Device To Your  GreenHouse</button>
         </div>
+        <div class="card-footer">
+          <button type="button" class="btn btn-secondary" (click)="generateToken()">ReGenerate Token</button>
         </div>
       </div>
     </div>
   </div>
+
+
+</div>
