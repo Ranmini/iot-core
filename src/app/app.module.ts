@@ -17,6 +17,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 
 
@@ -37,7 +38,8 @@ import { environment } from '../environments/environment';
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    LandingPageComponent
 
   ],
   providers: [],
