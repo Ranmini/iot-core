@@ -23,26 +23,20 @@
                 <th>
                   States
                 </th>
-                <th class="text-right">
-                  info
-                </th>
               </thead>
               <tbody>
               <tr *ngFor="let item of elements">
                 <td>
-                  {{item[0]}}
+                  {{item['tag']}}
                 </td>
                 <td>
-                  {{item[1]}}
+                  {{item['sensors']}}
                 </td>
                 <td>
-                  {{item[2]}}
+                  {{item['type']}}
                 </td>
                 <td>
-                  {{item[3]}}
-                </td>
-                <td class="text-right">
-                  <button type="button" class="btn btn-link" (click)="getInfo('hello')"><b>View</b></button>
+                  {{item['stat']}}
                 </td>
               </tr>
               </tbody>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DevicesService} from '../devices.service';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 
 @Component({
@@ -10,18 +11,22 @@ import {DevicesService} from '../devices.service';
 export class TableListComponent implements OnInit {
 
 
-  public test: string = 'q';
 
   public elements: Array<any> ;
 
-  constructor(private devices: DevicesService) { }
+  constructor(private devices: DevicesService, private db: AngularFirestore) {
+    this.db.collection('user1-device').valueChanges().forEach(x => {
+      console.log(x);
+      this.elements = x;
+    });
+  }
 
   ngOnInit() {
-    this.elements = this.devices.getDevices() ;
+
   }
 
   public getInfo(parm: string){
-    this.test = parm;
+
   }
 
 }

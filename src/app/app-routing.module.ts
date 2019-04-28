@@ -4,7 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {LandingPageComponent} from './landing-page/landing-page.component';
 
 const routes: Routes = [
-  { path: 'heroes', component: LandingPageComponent }
+  // { path: 'heroes', component: LandingPageComponent }
 ];
 
 @NgModule({
