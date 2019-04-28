@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  DataPipeService } from '../data-pipe.service';
+import {AngularFirestore} from '@angular/fire/firestore';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -65,6 +67,7 @@ export class DashboardComponent implements OnInit {
   public lineChartGradientsNumbersColors1: Array<any>;
 
   public date: any;
+  public dump: any;
   // events
   public chartClicked(e: any): void {
     console.log(e);
@@ -84,8 +87,14 @@ export class DashboardComponent implements OnInit {
       return 'rgb(' + r + ', ' + g + ', ' + b + ')';
     }
   }
-  constructor(private data: DataPipeService) { }
+  constructor(private data: DataPipeService, private db: AngularFirestore) {
+    this.db.collection('temp').valueChanges().forEach(x=>{
+      this.dump = x[0]['now'];
+    });
+
+  }
   ngOnInit() {
+    console.log(this.dump);
     this.date = new Date();
     this.chartColor = '#FFFFFF';
     this.canvas = document.getElementById('bigDashboardChart');

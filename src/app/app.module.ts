@@ -14,6 +14,11 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+
+
 
 @NgModule({
   imports: [
@@ -24,7 +29,11 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     RouterModule,
     AppRoutingModule,
     NgbModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+
   ],
   declarations: [
     AppComponent,

@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
-
+import {AngularFirestore} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataPipeService {
 
-  constructor() { }
+  public print: any;
+
+  constructor(private db: AngularFirestore) {
+    this.db.collection('temp').doc('today').ref.get().then((itm)=>{
+      this.print = itm.data().now;
+    });
+  }
 
 
   public realTimetemp(): number {
-    return 23.34;
+    return 45.99;
   }
 
   public realTimeHumi(): number {
@@ -31,7 +37,7 @@ export class DataPipeService {
         pointRadius: 4,
         fill: true,
         borderWidth: 2,
-        data: [80, 99, 86, 96, 123, 84, 100, 75, 88, 90, 123, 155, 80, 99, 86, 96, 123, 84, 100, 75, 88, 90, 123, 155] // temp data feeding Y
+        data: [40, 500, 650, 700, 1200, 1250, 1300, 1900, 40, 500, 650, 700, 1200, 1250, 1300, 1900] // temp data feeding Y
       }
     ];
 }
