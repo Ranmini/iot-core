@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +7,7 @@ export class DataPipeService {
 
   public print: any;
 
-  constructor(private db: AngularFirestore) {
-    this.db.collection('temp').doc('today').ref.get().then((itm)=>{
-      this.print = itm.data().now;
-    });
-  }
+  constructor() {}
 
 
   public realTimetemp(): number {

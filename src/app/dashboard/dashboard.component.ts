@@ -11,9 +11,9 @@ import {AngularFirestore} from '@angular/fire/firestore';
 export class DashboardComponent implements OnInit {
 
 
-  public temp: number = this.data.realTimetemp();
-  public humi: number = this.data.realTimeHumi();
-  public bright: number = this.data.realtimeBright();
+  public temp: number;
+  public humi: number;
+  public bright: number;
 
 
   public lineBigDashboardChartType;
@@ -67,7 +67,6 @@ export class DashboardComponent implements OnInit {
   public lineChartGradientsNumbersColors1: Array<any>;
 
   public date: any;
-  public dump: any;
   // events
   public chartClicked(e: any): void {
     console.log(e);
@@ -88,13 +87,14 @@ export class DashboardComponent implements OnInit {
     }
   }
   constructor(private data: DataPipeService, private db: AngularFirestore) {
-    this.db.collection('temp').valueChanges().forEach(x=>{
-      this.dump = x[0]['now'];
+    this.db.collection('user1').valueChanges().forEach(x=>{
+      this.bright = x[0]['val'];
+      this.humi = x[1]['val'];
+      this.temp =x[2]['val'];
     });
 
   }
   ngOnInit() {
-    console.log(this.dump);
     this.date = new Date();
     this.chartColor = '#FFFFFF';
     this.canvas = document.getElementById('bigDashboardChart');
