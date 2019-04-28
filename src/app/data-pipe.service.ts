@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class DataPipeService {
 
-  public print: any;
 
   constructor() {}
 
@@ -32,7 +31,7 @@ export class DataPipeService {
         pointRadius: 4,
         fill: true,
         borderWidth: 2,
-        data: [40, 500, 650, 700, 1200, 1250, 1300, 1900, 40, 500, 650, 700, 1200, 1250, 1300, 1900] // temp data feeding Y
+        data:  [40, 500, 650, 700, 1200, 1250, 1300, 1900, 40, 500, 650, 700, 1200, 1250, 1300, 1901]// temp data feeding Y
       }
     ];
 }
