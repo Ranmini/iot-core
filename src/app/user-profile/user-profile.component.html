@@ -13,19 +13,19 @@
               <div class="col-md-5 pr-1">
                 <div class="form-group">
                   <label>Customer Type (disabled)</label>
-                  <input type="text" class="form-control" disabled="" placeholder="Free" value="Creative Code Inc.">
+                  <input type="text" class="form-control" disabled="" placeholder="Free" value="Free plan">
                 </div>
               </div>
               <div class="col-md-3 px-1">
                 <div class="form-group">
                   <label>Username</label>
-                  <input type="text" class="form-control" placeholder="Username" value="michael23">
+                  <input type="text" class="form-control" placeholder="Username" value={{uname}} [(ngModel)]="uname" [ngModelOptions]="{standalone: true}">
                 </div>
               </div>
               <div class="col-md-4 pl-1">
                 <div class="form-group">
                   <label for="email">Email address</label>
-                  <input name="email" id="email" type="email" class="form-control" placeholder="Email">
+                  <input name="email" id="email" type="email" class="form-control" placeholder="Email" value= {{email}} [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
                 </div>
               </div>
             </div>
@@ -33,13 +33,13 @@
               <div class="col-md-6 pr-1">
                 <div class="form-group">
                   <label>First Name</label>
-                  <input type="text" class="form-control" placeholder="Company" value="Mike">
+                  <input type="text" class="form-control" placeholder="Firest Name" value={{fname}} [(ngModel)]="fname" [ngModelOptions]="{standalone: true}">
                 </div>
               </div>
               <div class="col-md-6 pl-1">
                 <div class="form-group">
                   <label>Last Name</label>
-                  <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
+                  <input type="text" class="form-control" placeholder="Last Name" value={{lname}} [(ngModel)]="lname" [ngModelOptions]="{standalone: true}">
                 </div>
               </div>
             </div>
@@ -47,7 +47,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label>Address</label>
-                  <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                  <input type="text" class="form-control" placeholder="Home Address" value={{address}} [(ngModel)]="address" [ngModelOptions]="{standalone: true}">
                 </div>
               </div>
             </div>
@@ -55,19 +55,19 @@
               <div class="col-md-4 pr-1">
                 <div class="form-group">
                   <label>City</label>
-                  <input type="text" class="form-control" placeholder="City" value="Mike">
+                  <input type="text" class="form-control" placeholder="City" value={{city}} [(ngModel)]="city" [ngModelOptions]="{standalone: true}">
                 </div>
               </div>
               <div class="col-md-4 px-1">
                 <div class="form-group">
                   <label>Country</label>
-                  <input type="text" class="form-control" placeholder="Country" value="Andrew">
+                  <input type="text" class="form-control" placeholder="Country" value={{country}} [(ngModel)]="country" [ngModelOptions]="{standalone: true}">
                 </div>
               </div>
               <div class="col-md-4 pl-1">
                 <div class="form-group">
-                  <label>Postal Code</label>
-                  <input type="number" class="form-control" placeholder="ZIP Code">
+                  <label>Tel No</label>
+                  <input type="number" class="form-control" placeholder="Mobile Number" value={{tel}} [(ngModel)]="tel" [ngModelOptions]="{standalone: true}">
                 </div>
               </div>
             </div>
@@ -75,14 +75,14 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label>About Me</label>
-                  <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                  <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" [(ngModel)]="about" [ngModelOptions]="{standalone: true}"> {{about}} </textarea>
                 </div>
               </div>
             </div>
           </form>
         </div>
         <div class="card-footer">
-          <button type="button" class="btn btn-secondary">Submit</button>
+          <button type="button" class="btn btn-secondary" (click)="update()">Submit</button>
         </div>
     </div>
 </div>
