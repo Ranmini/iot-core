@@ -30,7 +30,7 @@ export class MapsComponent implements OnInit {
       this.geo2 = pos.lat;
     })
 
-    var myLatlng =  {lat: 6.9271, lng: 79.8612 };
+    var myLatlng =  {lat: 6.9022, lng: 79.8611};
     var mapOptions = {
         zoom: 13,
         center: myLatlng,
@@ -126,7 +126,7 @@ export class MapsComponent implements OnInit {
 
     var marker = new google.maps.Marker({
         position: myLatlng,
-        title: "Hello World!"
+        title: "University of Colombo School of Computing"
     });
 
     // To add the marker to the map, call setMap();
