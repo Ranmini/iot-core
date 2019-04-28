@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-profile',
@@ -19,7 +20,7 @@ export class UserProfileComponent implements OnInit {
   public about: string;
 
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, private toastr: ToastrService) {
     this.db.collection('user1-info').valueChanges().forEach(x => {
       this.uname = x[0]['uname'];
       this.email = x[0]['email'];
@@ -46,8 +47,17 @@ export class UserProfileComponent implements OnInit {
     this.db.collection('user1-info').doc('details').update({'tel':this.tel});
     this.db.collection('user1-info').doc('details').update({'about':this.about});
 
+    this.noti('bottom','right', 'Profile Updated', 'message');
 
     return null;
   }
-
+  public noti(from: string, align: string, message: string, title:string) {
+    this.toastr.info('<span class="now-ui-icons ui-1_bell-53"></span> '+ message, title, {
+      timeOut: 8000,
+      closeButton: true,
+      enableHtml: true,
+      toastClass: "alert alert-info alert-with-icon",
+      positionClass: 'toast-' + from + '-' +  align
+    });
+  }
 }
