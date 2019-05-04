@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LocationService} from '../location.service';
+import {HttpClient} from '@angular/common/http';
 
 
 declare const google: any;
@@ -17,13 +18,30 @@ draggable?: boolean;
 })
 export class MapsComponent implements OnInit {
 
-  constructor(private location: LocationService) { }
+  constructor(private location: LocationService, private http: HttpClient) { }
 
   public position_user = this.location.getPosition();
-  public geo: number;
+
+  public avghumidity: number;
+  public maxwind_mph: number;
+  public avgtemp_c: number;
+  public condition_text: string;
+
+  public geo :number;
   public geo2: number;
 
   ngOnInit() {
+
+    this.getWether().subscribe(x=> {
+      x.forecast.forecastday.forEach(y=>{
+        this.icon  = y.day.condition.icon;
+        this.condition_text = y.day.condition.text;
+        this.avghumidity = y.day.avghumidity;
+        this.maxwind_mph = y.day.maxwind_mph;
+        this.avgtemp_c = y.day.avgtemp_c;
+      });
+
+    });
 
     this.position_user.then(pos=>{
       this.geo = pos.lng;
@@ -134,4 +152,8 @@ export class MapsComponent implements OnInit {
   }
 
   public icon: string = 'weather.svg'
+
+  getWether(): any {
+    return this.http.get('http://api.apixu.com/v1/forecast.json?key=9b79af840c7145afad454355190305&q=Colombo');
+  }
 }
