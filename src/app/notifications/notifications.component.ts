@@ -65,5 +65,5 @@ export class NotificationsComponent implements OnInit {
   }
   ngOnInit() {
   }
-
+public bill = 0.0;
 }

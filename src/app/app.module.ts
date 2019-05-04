@@ -18,6 +18,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { WeatherMapComponent } from './weather-map/weather-map.component';
 
 
 
@@ -39,7 +40,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    WeatherMapComponent
 
   ],
   providers: [],

@@ -133,4 +133,5 @@ export class MapsComponent implements OnInit {
     marker.setMap(map);
   }
 
+  public icon: string = 'weather.svg'
 }
