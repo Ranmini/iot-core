@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Chart } from 'chart.js'
+import { reduce } from 'rxjs/operators';
 
 @Component({
   selector: 'app-notifications',
@@ -7,6 +9,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./notifications.component.css']
 })
 export class NotificationsComponent implements OnInit {
+
+  PieChart = [];
 
   constructor(private toastr: ToastrService) {}
   showNotification(from, align){
@@ -64,6 +68,40 @@ export class NotificationsComponent implements OnInit {
       }
   }
   ngOnInit() {
+    this.PieChart = new Chart('pieChart',{
+      type: 'pie',
+    data: {
+      lables: ["jan", "Feb", "March", "April", "May"],
+      datasets: [{
+        label: 'Number of Items Sold in Months',
+        data: [9, 7, 3, 15, 8],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(100, 206, 86, 0.2)',
+          'rgba(20, 30, 100, 0.2)'
+        ],
+        fill: false,
+        lineTension: 0.2,
+        borderColor: "red",
+        borderWidth: 1
+      }]
+    },
+    options: {
+      title:{
+        text: "Pie Chart",
+        display: true
+      },
+      // scales: {
+      //   yAxes: [{
+      //     ticks: {
+      //       beginAtZero:true
+      //     }
+      //   }]
+      // }
+    }
+    });
   }
 public bill = 0.0;
 }
