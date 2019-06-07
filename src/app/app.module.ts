@@ -41,7 +41,7 @@ import { WeatherMapComponent } from './weather-map/weather-map.component';
     AppComponent,
     AdminLayoutComponent,
     LandingPageComponent,
-    WeatherMapComponent
+    WeatherMapComponent,
 
   ],
   providers: [],
