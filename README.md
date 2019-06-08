@@ -1,7 +1,8 @@
+![Screenshot (5)](https://user-images.githubusercontent.com/20130001/58983213-efb61100-87f3-11e9-9ebe-f2b731f58ef6.png)
 
 
 ```
-Now Ui Dashboard
+IOT CORE Dashboard
 ├── CHANGELOG.md
 ├── LICENSE.md
 ├── README.md
