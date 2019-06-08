@@ -15,6 +15,11 @@ export class DashboardComponent implements OnInit {
   public humi: number;
   public bright: number;
 
+  public test = [1,2,3,4,5]
+
+  foo(){
+    this.test=[1,2,3]
+  }
 
   public lineBigDashboardChartType;
   public gradientStroke;
@@ -118,7 +123,7 @@ export class DashboardComponent implements OnInit {
           fill: true,
 
           borderWidth: 2,
-          data: [50, 150, 100, 190] // power assumption
+          data: [50, 150, 100, 190, 50] // power assumption
         }
       ];
       this.lineBigDashboardChartColors = [

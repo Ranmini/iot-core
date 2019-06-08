@@ -18,7 +18,7 @@ export class IconsComponent implements OnInit {
   public token: any;
 
   constructor(private db: AngularFirestore, private toastr: ToastrService) {
-    this.db.collection('user1-esp8266').valueChanges().forEach(x => {
+    this.db.collection('user1-device').valueChanges().forEach(x => {
       this.device_sensors = x;
       console.log(x);
     });
@@ -28,6 +28,14 @@ export class IconsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+
+  public addDevices(){
+    // this.db.collection('user1-device').doc("devices").update({
+    //   'sensors':this.device_sensors.sensors+"hello"
+    // })
+   this.generateToken();
   }
 
   public generateToken() {

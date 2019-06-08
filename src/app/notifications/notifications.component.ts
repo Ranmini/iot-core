@@ -71,26 +71,24 @@ export class NotificationsComponent implements OnInit {
     this.PieChart = new Chart('pieChart',{
       type: 'pie',
     data: {
-      lables: ["jan", "Feb", "March", "April", "May"],
+      // lables: ["Used", "Remaining"],
+      labels: ["Used", "Remaining"],
       datasets: [{
-        label: 'Number of Items Sold in Months',
-        data: [9, 7, 3, 15, 8],
+        label: 'Usage of free hours',
+        data: [72,28],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(100, 206, 86, 0.2)',
-          'rgba(20, 30, 100, 0.2)'
+          'red',
+          'blue',
         ],
         fill: false,
         lineTension: 0.2,
-        borderColor: "red",
+        borderColor: "black",
         borderWidth: 1
       }]
     },
     options: {
       title:{
-        text: "Pie Chart",
+        text: "Usage of free hours",
         display: true
       },
       // scales: {

@@ -19,6 +19,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { WeatherMapComponent } from './weather-map/weather-map.component';
+import { BrowserModule }    from '@angular/platform-browser';
 
 
 
@@ -31,6 +32,7 @@ import { WeatherMapComponent } from './weather-map/weather-map.component';
     RouterModule,
     AppRoutingModule,
     NgbModule,
+    BrowserModule,
     ToastrModule.forRoot(),
 
     AngularFireModule.initializeApp(environment.firebase),
