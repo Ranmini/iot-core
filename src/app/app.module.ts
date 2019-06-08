@@ -19,7 +19,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { WeatherMapComponent } from './weather-map/weather-map.component';
-
+import { PlantsService } from './services/plants.service';
 
 
 @NgModule({
@@ -32,19 +32,18 @@ import { WeatherMapComponent } from './weather-map/weather-map.component';
     AppRoutingModule,
     NgbModule,
     ToastrModule.forRoot(),
-
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     LandingPageComponent,
     WeatherMapComponent,
+    
 
   ],
-  providers: [],
+  providers: [PlantsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
