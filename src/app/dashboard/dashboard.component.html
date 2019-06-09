@@ -267,7 +267,7 @@
 
 
 
-                <tr *ngFor="let taske of test" >
+                <tr *ngFor="let taske of task" >
                   <td>
                     <div class="form-check">
                       <label class="form-check-label">
@@ -276,7 +276,7 @@
                       </label>
                     </div>
                   </td>
-                  <td class="text-left">Sign contract for "What are conference organizers afraid of?"</td>
+                  <td class="text-left">{{taske}}</td>
                   <td class="td-actions text-right">
 
                     <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
@@ -302,19 +302,22 @@
             <div class="col-md-4 px-1">
               <div class="form-group">
                 <label>IOT Device</label>
-                <input type="text" class="form-control" placeholder="Device Tag" value="Ex96backyard">
+                <input type="text" class="form-control" placeholder="Device Tag" value="Ex96backyard"
+                [(ngModel)]="IOTDevice" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
             <div class="col-md-4 px-1">
               <div class="form-group">
                 <label>Sensor</label>
-                <input type="text" class="form-control" placeholder="Sensor" value="thermometer">
+                <input type="text" class="form-control" placeholder="Sensor" value="thermometer"
+                [(ngModel)]="Sensor" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
             <div class="col-md-4 px-1">
               <div class="form-group">
                 <label>Threshold</label>
-                <input type="text" class="form-control" placeholder="Logic" value="threshold>30">
+                <input type="text" class="form-control" placeholder="Logic" value="threshold>30"
+                [(ngModel)]="Threshold" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
           </div>
@@ -323,7 +326,7 @@
             <button type="button" class="btn btn-secondary">Send me a SMS</button>
           </div>
             <div class="col-md-4 col-sm-4 px-1">
-              <button type="button" class="btn btn-secondary">Send me an Email</button>
+              <button type="button" class="btn btn-secondary" (click) = addTask()>Send me an Email</button>
             </div>
           </div>
         </div>

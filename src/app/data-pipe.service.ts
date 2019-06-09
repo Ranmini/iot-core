@@ -116,7 +116,7 @@ export class DataPipeService {
   public brightData(): Array<any> {
     return [
       {
-        label: ' brightness',
+        label: ' Pressure',
         pointBorderWidth: 2,
         pointHoverRadius: 4,
         pointHoverBorderWidth: 1,
@@ -130,7 +130,7 @@ export class DataPipeService {
   public brightDataWeek(): Array<any> {
     return [
       {
-        label: ' brightness',
+        label: ' Pressure',
         pointBorderWidth: 2,
         pointHoverRadius: 4,
         pointHoverBorderWidth: 1,

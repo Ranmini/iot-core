@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  DataPipeService } from '../data-pipe.service';
 import {AngularFirestore} from '@angular/fire/firestore';
-
+import {Md5} from 'ts-md5';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,12 +14,6 @@ export class DashboardComponent implements OnInit {
   public temp: number;
   public humi: number;
   public bright: number;
-
-  public test = [1,2,3,4,5]
-
-  foo(){
-    this.test=[1,2,3]
-  }
 
   public lineBigDashboardChartType;
   public gradientStroke;
@@ -515,4 +509,32 @@ export class DashboardComponent implements OnInit {
     },
       this.lineChartGradientsNumbersType1 = 'bar';
   }
+
+  public test = [1,2,3,4,5]
+
+  foo(){
+    this.test=[1,2,3]
+  }
+
+public IOTDevice:any;
+public Sensor: any;
+public Threshold: any;
+public task = []
+
+addTask(){
+  console.log("if sensor of "+this.Sensor+"on iot device "+this.IOTDevice+"pass the threshold"+this.Threshold)
+  var str = new Date().getTime().toString();
+  this.db.collection('user1-tasks').doc(Md5.hashAsciiStr(str.concat(new Date().getTime().toString())).toString())
+  .set({
+    'message':"if sensor of "+this.Sensor+"on iot device "+this.IOTDevice+"pass the threshold"+this.Threshold,
+    'th':this.Threshold
+  }) 
+
+  this.task.push("if sensor of "+this.Sensor+"on iot device "+this.IOTDevice+"pass the threshold"+this.Threshold)
+
+   this.IOTDevice = ""
+   this.Sensor = ""
+   this.Threshold = ""
+}
+
 }
