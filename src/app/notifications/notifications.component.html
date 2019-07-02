@@ -13,10 +13,15 @@
 
 
           <div class="row">
-            <div class="col-5">
-              text
+            <div class="col-md-6">
+             <h4>last month bill {{last_month_bill}}</h4>
+             <h4>last billing date {{last_billing_date}}</h4>
+             <h4>next billing date {{next_billing_date}}</h4>
+             <h4>used free hours {{used_free_hours}}</h4>
+             <h4>remaing free hours {{remaing_free_hours}} </h4>
+            <button type="button" class="btn btn-secondary">Pay Now</button>
             </div>
-            <div class="col-5" style="float: right;">
+            <div class="col-md-6" style="float: right;">
               <canvas id="pieChart"></canvas>
             </div>
           </div>
@@ -25,14 +30,14 @@
 
           <canvas id="horizontalBar"></canvas>
 
-          <div class="alert alert-info alert-with-icon" data-notify="container">
+        <!--   <div class="alert alert-info alert-with-icon" data-notify="container">
             <button type="button" aria-hidden="true" class="close">
               <i class="now-ui-icons ui-1_simple-remove"></i>
             </button>
             <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
             <span data-notify="message">This is a notification with close button and icon.</span>
           </div>
-
+ -->
 
         </div>
       </div>

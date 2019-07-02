@@ -28,7 +28,7 @@
       <div class="card">
         <div class="card-header">
           <h5 class="card-category">Real Time Update</h5>
-          <h4 class="card-title"> Humidity {{humi}}</h4>
+          <h4 class="card-title"> Humidity {{humi}}%</h4>
         </div>
         <div class="card-body">
 
@@ -40,7 +40,7 @@
       <div class="card">
         <div class="card-header">
           <h5 class="card-category">Real Time Updates</h5>
-          <h4 class="card-title"> Brightness {{bright}}</h4>
+          <h4 class="card-title">  Pressure {{bright}} mb</h4>
         </div>
         <div class="card-body">
 
@@ -121,7 +121,7 @@
       <div class="card card-chart">
         <div class="card-header">
           <h5 class="card-category"> Green House {{date | date:'yyyy-MM-dd'}} </h5>
-          <h4 class="card-title">Brightness</h4>
+          <h4 class="card-title">Pressure</h4>
         </div>
         <div ngbDropdown>
           <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" ngbDropdownToggle>
@@ -223,7 +223,7 @@
       <div class="card card-chart">
         <div class="card-header">
           <h5 class="card-category"> Green House {{date | date:'yyyy-MM'}} </h5>
-          <h4 class="card-title">Brightness</h4>
+          <h4 class="card-title">Pressure </h4>
         </div>
         <div ngbDropdown>
           <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" ngbDropdownToggle>
@@ -267,7 +267,7 @@
 
 
 
-                <tr *ngFor="let taske of [1,2]" >
+                <tr *ngFor="let taske of task" >
                   <td>
                     <div class="form-check">
                       <label class="form-check-label">
@@ -276,14 +276,13 @@
                       </label>
                     </div>
                   </td>
-                  <td class="text-left">Sign contract for "What are conference organizers afraid of?"</td>
+                  <td class="text-left">{{taske}}</td>
                   <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                      <i class="now-ui-icons ui-2_settings-90"></i>
-                    </button>
+
                     <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                      <i class="now-ui-icons ui-1_simple-remove"></i>
+                      <i class="now-ui-icons ui-1_simple-remove" (click)=foo()></i>
                     </button>
+
                   </td>
                 </tr>
 
@@ -302,20 +301,23 @@
           <div class="row">
             <div class="col-md-4 px-1">
               <div class="form-group">
-                <label>Country</label>
-                <input type="text" class="form-control" placeholder="Device Tag" value="Ex96backyard">
+                <label>IOT Device</label>
+                <input type="text" class="form-control" placeholder="Device Tag" value="Ex96backyard"
+                [(ngModel)]="IOTDevice" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
             <div class="col-md-4 px-1">
               <div class="form-group">
-                <label>Country</label>
-                <input type="text" class="form-control" placeholder="Sensor" value="thermometer">
+                <label>Sensor</label>
+                <input type="text" class="form-control" placeholder="Sensor" value="thermometer"
+                [(ngModel)]="Sensor" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
             <div class="col-md-4 px-1">
               <div class="form-group">
-                <label>Country</label>
-                <input type="text" class="form-control" placeholder="Logic" value="threshold>30">
+                <label>Threshold</label>
+                <input type="text" class="form-control" placeholder="Logic" value="threshold>30"
+                [(ngModel)]="Threshold" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
           </div>
@@ -324,7 +326,7 @@
             <button type="button" class="btn btn-secondary">Send me a SMS</button>
           </div>
             <div class="col-md-4 col-sm-4 px-1">
-              <button type="button" class="btn btn-secondary">Send me an Email</button>
+              <button type="button" class="btn btn-secondary" (click) = addTask()>Send me an Email</button>
             </div>
           </div>
         </div>

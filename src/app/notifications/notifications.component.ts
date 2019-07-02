@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Chart } from 'chart.js'
 import { reduce } from 'rxjs/operators';
+import {AngularFirestore} from '@angular/fire/firestore';
+
 
 @Component({
   selector: 'app-notifications',
@@ -12,7 +14,25 @@ export class NotificationsComponent implements OnInit {
 
   PieChart = [];
 
-  constructor(private toastr: ToastrService) {}
+  public  bill:any;
+  public  last_month_bill: any;
+  public  last_billing_date: any;
+  public  next_billing_date: any;
+  public  used_free_hours: any;
+  public  remaing_free_hours: any;
+
+  constructor(private toastr: ToastrService, private db: AngularFirestore) {
+
+    this.db.collection('user1-bill').valueChanges().forEach(x=>{
+      this.bill = x[0]['bill']
+      this.last_month_bill = x[0]['last_month_bill']
+      this.last_billing_date = x[0]['last_billing_date']
+      this.next_billing_date = x[0]['next_billing_date']
+      this.used_free_hours = x[0]['used_free_hours']
+      this.remaing_free_hours = x[0]['remaing_free_hours']
+      console.log(this.bill)
+    });
+  }
   showNotification(from, align){
 
       const color = Math.floor((Math.random() * 5) + 1);
@@ -71,26 +91,24 @@ export class NotificationsComponent implements OnInit {
     this.PieChart = new Chart('pieChart',{
       type: 'pie',
     data: {
-      lables: ["jan", "Feb", "March", "April", "May"],
+      // lables: ["Used", "Remaining"],
+      labels: ["Used", "Remaining"],
       datasets: [{
-        label: 'Number of Items Sold in Months',
-        data: [9, 7, 3, 15, 8],
+        label: 'Usage of free hours',
+        data: [78,22],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(100, 206, 86, 0.2)',
-          'rgba(20, 30, 100, 0.2)'
+          'red',
+          'blue',
         ],
         fill: false,
         lineTension: 0.2,
-        borderColor: "red",
+        borderColor: "black",
         borderWidth: 1
       }]
     },
     options: {
       title:{
-        text: "Pie Chart",
+        text: "Usage of free hours",
         display: true
       },
       // scales: {
@@ -103,5 +121,4 @@ export class NotificationsComponent implements OnInit {
     }
     });
   }
-public bill = 0.0;
 }

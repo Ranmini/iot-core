@@ -20,6 +20,8 @@ import { environment } from '../environments/environment';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { WeatherMapComponent } from './weather-map/weather-map.component';
 import { PlantsService } from './services/plants.service';
+import { BrowserModule }    from '@angular/platform-browser';
+
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { PlantsService } from './services/plants.service';
     RouterModule,
     AppRoutingModule,
     NgbModule,
+    BrowserModule,
     ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
